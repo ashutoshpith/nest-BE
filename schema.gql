@@ -16,11 +16,29 @@ type CreateCatDto {
   breed: String!
 }
 
+type CreateRegionDto {
+  id: ID!
+  name: String!
+  description: String!
+  country: String!
+}
+
 type Mutation {
   createCat(input: CatsInput!): CreateCatDto!
+  createRegion(input: RegionInput!): CreateRegionDto!
+  updateRegion(input: RegionInput!, id: String!): CreateRegionDto!
+  deleteRegion(id: String!): CreateRegionDto!
 }
 
 type Query {
   hello: String!
   cats: [CreateCatDto!]!
+  regions: [CreateRegionDto!]!
+  region(id: String!): CreateRegionDto!
+}
+
+input RegionInput {
+  name: String!
+  description: String!
+  country: String!
 }
